@@ -1,0 +1,33 @@
+{
+  "executionRoleArn": "arn:aws:iam::514004723145:role/CICDRole",
+  "containerDefinitions": [
+    {
+      "name": "httpd-kasaiso",
+      "image": "<IMAGE1_NAME>",
+      "logConfiguration":
+        {
+          "logDriver": "awslogs",
+          "options":
+            {
+              "awslogs-group": "/ecs/logs/ApplicationGroups",
+              "awslogs-region": "eu-west-1",
+              "awslogs-stream-prefix": "ecs"
+            }
+        },
+      "memory": 1024,
+      "memoryReservation": 1024,
+      "portMappings": [
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp"
+        }
+      ]
+    }
+  ],
+  "requiresCompatibilities": ["FARGATE"],
+  "networkMode": "awsvpc",
+  "cpu": "512",
+  "memory": "1024",
+  "family": "httpd-kasaiso"
+}
