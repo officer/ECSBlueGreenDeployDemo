@@ -5,9 +5,12 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
+      - $(aws ecr get-login --no-include-email --region $AWS_DEFAULT_REGION)
   build:
     commands:
       - echo Build started on `date`
+      - docker build -t httpd-kasaiso:0 .
+      - docker push httpd-kasaiso:0
   post_build:
     commands:
       - echo Build completed on `date`
@@ -18,4 +21,4 @@ artifacts:
   files:
     - imageDetail.json
     - taskdef.json
-    
+
