@@ -10,7 +10,7 @@ phases:
     commands:
       - echo Build started on `date`
       - docker build -t httpd-kasaiso:0 .
-      - docker push httpd-kasaiso:0
+      - docker push 514004723145.dkr.ecr.eu-west-1.amazonaws.com/httpd-kasaiso:0
   post_build:
     commands:
       - echo Build completed on `date`
